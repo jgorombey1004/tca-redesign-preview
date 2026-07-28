@@ -69,7 +69,27 @@
   .tier ul{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
   .tier li{font-size:13px;color:var(--ink2);padding-left:20px;position:relative}
   .tier li::before{content:"✓";position:absolute;left:0;color:var(--lime-d);font-weight:800}
-  .tier .amt{white-space:nowrap}
+  .tier{position:relative}
+  .price{align-items:start}
+  .onetime{color:var(--muted);font-size:11px}
+  /* Tiers the client is not being charged for — crossed out but still legible. */
+  .xout{background:#fafafa}
+  .xout .inner{opacity:.42;filter:grayscale(1)}
+  .xout .x{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .xout .x line{stroke:#c0392b;stroke-width:2.5;vector-effect:non-scaling-stroke;opacity:.85}
+  /* The package they actually get — dark card, price in lime. */
+  .win{background:var(--grey-d);border:2px solid var(--lime);box-shadow:0 18px 38px -20px rgba(0,0,0,.6)}
+  .win h4{color:#fff}
+  .win .yours{align-self:flex-start;font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:700;background:var(--lime);color:var(--onlime);padding:4px 10px;border-radius:20px;margin-bottom:10px}
+  .win .amt{display:flex;align-items:baseline;gap:10px;white-space:nowrap;margin:8px 0 2px}
+  .win .was{font-family:var(--serif);font-size:22px;font-weight:700;color:#9a9a95;text-decoration:line-through;text-decoration-color:#c0392b;text-decoration-thickness:3px}
+  .win .now{font-family:var(--serif);font-size:44px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--lime-2)}
+  .win .onetime{color:#a8a8a2}
+  .win li{color:#dcdcd6}
+  .win li::before{color:var(--lime)}
+  .win .whole{margin-top:12px;border-top:1px solid rgba(255,255,255,.18);padding-top:11px;font-size:13px;color:#e6e6e0;line-height:1.45}
+  .win .whole b{color:var(--lime-2)}
+  @media(max-width:760px){.price{grid-template-columns:1fr}}
 
   /* timeline */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -149,23 +169,30 @@
   <div class="pad">
     <div class="section-title"><span class="n serif">03</span><h2>Investment</h2></div>
     <div class="price">
-      <div class="tier">
-        <h4>Refresh</h4>
-        <div class="amt">$900</div>
-        <span class="cond" style="color:var(--muted);font-size:11px">One-time</span>
-        <ul><li>New look on existing pages</li><li>Mobile-friendly + faster</li><li>Quote form + click-to-call</li><li>Facebook / Google links</li></ul>
+      <div class="tier xout">
+        <svg class="x" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100"/><line x1="0" y1="100" x2="100" y2="0"/></svg>
+        <div class="inner">
+          <h4>Refresh</h4>
+          <div class="amt">$900</div>
+          <span class="cond onetime">One-time</span>
+          <ul><li>New look on existing pages</li><li>Mobile-friendly + faster</li><li>Quote form + click-to-call</li><li>Facebook / Google links</li></ul>
+        </div>
       </div>
-      <div class="tier best">
-        <span class="rec">Recommended</span>
-        <h4>Complete Redesign</h4>
-        <div class="amt">$2,900</div>
-        <span class="cond" style="color:var(--muted);font-size:11px">One-time</span>
-        <ul><li>Everything in Refresh</li><li>Full custom design (this theme)</li><li>Real project galleries</li><li>SEO + service-area pages</li><li>Text-a-Quote setup</li></ul>
+      <div class="tier xout">
+        <svg class="x" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100"/><line x1="0" y1="100" x2="100" y2="0"/></svg>
+        <div class="inner">
+          <h4>Complete Redesign</h4>
+          <div class="amt">$2,900</div>
+          <span class="cond onetime">One-time</span>
+          <ul><li>Everything in Refresh</li><li>Full custom design (this theme)</li><li>Real project galleries</li><li>SEO + service-area pages</li><li>Text-a-Quote setup</li></ul>
+        </div>
       </div>
-      <div class="tier">
+      <div class="tier win">
+        <span class="yours">Your price</span>
         <h4>Premium + Features</h4>
-        <div class="amt">$4,900</div>
-        <span class="cond" style="color:var(--muted);font-size:11px">One-time</span>
+        <div class="amt"><span class="was">$4,900</span><span class="now">$1,000</span></div>
+        <span class="cond onetime">One-time</span>
+        <div class="whole">The <b>entire Premium package</b> &mdash; every feature below &mdash; for <b>$1,000</b>.</div>
         <ul><li>Everything in Complete</li><li>Instant Estimator</li><li>Before/After gallery tools</li><li>Financing calculator</li><li>Priority launch</li></ul>
       </div>
     </div>
