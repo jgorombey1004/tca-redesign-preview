@@ -35,7 +35,11 @@
   .btn:hover{transform:translateY(-2px)}
   .cta-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px}
   .cta-row .btn{margin-top:0}
-  .more{font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:12px;font-weight:700;color:var(--lime-d);line-height:1.35;max-width:165px}
+  .more{font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:12px;font-weight:700;color:var(--lime-d);line-height:1.35;max-width:165px;border-bottom:1px solid rgba(95,119,20,.35);cursor:pointer;transition:color .15s,border-color .15s}
+  .more:hover{color:var(--onlime);border-bottom-color:var(--lime-d)}
+  html{scroll-behavior:smooth}
+  #more{scroll-margin-top:24px}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   .btn.lime{background:var(--lime);color:var(--onlime);box-shadow:0 12px 24px -12px rgba(150,175,30,.6)}
   .feature .prev{position:relative;background:linear-gradient(160deg,#eaf4fd,#dcecfa);border-left:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:24px}
   .mini{width:100%;max-width:280px;background:#fff;border:1px solid #d5e6f6;border-radius:12px;overflow:hidden;box-shadow:0 14px 30px -18px rgba(20,60,100,.5)}
@@ -85,7 +89,7 @@
       <p>Same familiar blue you use today, on a faster, modern, mobile-first layout — with your real patios, pools, and stonework front and center, plus a one-tap "text us a photo for a quote."</p>
       <div class="cta-row">
         <a class="btn" href="./8-coastal-blue.html">Open the live preview →</a>
-        <span class="more">9 more color options below <span aria-hidden="true">↓</span></span>
+        <a class="more" href="#more">9 more color options below <span aria-hidden="true">↓</span></a>
       </div>
     </div>
     <div class="prev">
@@ -100,7 +104,7 @@
   </a>
   <p class="pdfline">Want a copy to keep or print? <a href="./TCA-Outdoor-proposal.pdf" download>Download the proposal as a PDF</a></p>
 
-  <div class="others">
+  <div class="others" id="more">
     <h3>Prefer a different look?</h3>
     <p class="sub">Same site and features — nine more color directions, split light and dark. Click any to open it live.</p>
     <div class="cols">
