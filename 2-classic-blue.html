@@ -794,3 +794,13 @@
   .foot-grid{grid-template-columns:1fr;gap:20px}
 }
 </style>
+<style>
+/* Nav fix: on phones the row was brand + Facebook + "Get a Quote" + burger
+   with a 28px gap, which cannot fit and forced a 482px layout. The light-theme
+   mockups already hide their nav CTA at this breakpoint; match that. The
+   burger menu and the in-page CTAs still cover the quote path. */
+@media(max-width:720px){
+  .nav{gap:14px}
+  .nav-cta{display:none}
+}
+</style>
