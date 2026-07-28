@@ -709,3 +709,23 @@
   .foot-grid{grid-template-columns:1fr;gap:20px}
 }
 </style>
+
+<script>
+/* The three trade tiles all link to #estimator. Preselect the trade that was
+   clicked, so "Pools" no longer lands on a Hardscape estimate. Delegates to
+   the estimator's own button handler so materials and totals refresh too. */
+(function(){
+  var MAP={'hardscapes':'hard','pools':'pool','masonry':'mas'};
+  var tiles=document.querySelectorAll('a.tile[href="#estimator"]');
+  Array.prototype.forEach.call(tiles,function(t){
+    var h=t.querySelector('h3');
+    if(!h)return;
+    var key=MAP[h.textContent.trim().toLowerCase()];
+    if(!key)return;
+    t.addEventListener('click',function(){
+      var b=document.querySelector('#est-svc button[data-svc="'+key+'"]');
+      if(b&&b.getAttribute('aria-pressed')!=='true')b.click();
+    });
+  });
+})();
+</script>
