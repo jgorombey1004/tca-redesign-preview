@@ -84,6 +84,12 @@
   .step .w{font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--lime-d);font-weight:700}
   .step h4{font-size:16px;margin:4px 0 4px}
   .step p{font-size:13.5px;color:var(--muted)}
+  /* Build is already complete — first two steps read as done. */
+  .step.done .w{color:var(--lime-d)}
+  .step.next{border-left-color:var(--grey-m)}
+  .step.next .w{color:var(--grey-m)}
+  .readynow{margin:0 0 14px;font-size:14.5px;color:var(--ink2);line-height:1.6}
+  .readynow b{color:var(--lime-d)}
 
   .pays{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   .pay{background:var(--grey-d);color:#f0f0ec;border-radius:12px;padding:18px}
@@ -178,11 +184,12 @@
 
   <hr>
   <div class="pad">
-    <div class="section-title"><span class="n serif">04</span><h2>Timeline — about 3–4 weeks</h2></div>
+    <div class="section-title"><span class="n serif">04</span><h2>Timeline — ready now</h2></div>
+    <p class="readynow"><b>This is already built.</b> Everything you just clicked through exists today — the design, your real project photos, and the working features. The only step left is your review.</p>
     <div class="steps">
-      <div class="step"><div class="w">Week 1</div><h4>Design & content</h4><p>Finalize the theme, gather photos, write the copy, confirm pages.</p></div>
-      <div class="step"><div class="w">Weeks 2–3</div><h4>Build & features</h4><p>Develop the site, wire up Text-a-Quote and the interactive tools.</p></div>
-      <div class="step"><div class="w">Week 4</div><h4>Review & launch</h4><p>Your review, revisions, go live, and a quick how-to walkthrough.</p></div>
+      <div class="step done"><div class="w">&#10003; Done</div><h4>Design &amp; content</h4><p>Theme designed, your real project photos in place, copy written, pages laid out.</p></div>
+      <div class="step done"><div class="w">&#10003; Done</div><h4>Build &amp; features</h4><p>Site built — Text-a-Quote, the instant estimator, galleries and financing tools all working. Try them in the preview.</p></div>
+      <div class="step next"><div class="w">When you're ready</div><h4>Review &amp; launch</h4><p>Your review and any changes you want, then we go live and walk you through it.</p></div>
     </div>
   </div>
 
