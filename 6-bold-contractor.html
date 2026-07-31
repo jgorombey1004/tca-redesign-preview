@@ -155,25 +155,6 @@
   .out-cta{margin-top:auto;padding-top:26px;display:flex;flex-direction:column;gap:10px}
   .microcopy{font-size:12.5px;color:var(--muted);text-align:center}
 
-  /* ============ BEFORE / AFTER ============ */
-  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
-  .filters button{background:var(--ink-800);border:1px solid var(--line);color:var(--sand-200);border-radius:30px;padding:9px 18px;font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-weight:700;font-size:12.5px;cursor:pointer;transition:.2s}
-  .filters button[aria-pressed="true"]{background:var(--ember);color:#1c0d00;border-color:transparent}
-  .ba-main{display:grid;grid-template-columns:1.4fr 1fr;gap:22px;align-items:stretch}
-  .ba{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);height:440px;user-select:none;touch-action:none;cursor:ew-resize}
-  .ba .layer{position:absolute;inset:0}
-  .ba .after{clip-path:inset(0 calc(100% - var(--x,55%)) 0 0)}
-  .ba .lbl{position:absolute;top:14px;font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:700;padding:6px 12px;border-radius:20px;background:rgba(20,18,16,.7);border:1px solid var(--line);z-index:4}
-  .ba .lbl.b{left:14px}.ba .lbl.a{right:14px;color:var(--ember-2)}
-  .ba-handle{position:absolute;top:0;bottom:0;left:var(--x,55%);width:2px;background:linear-gradient(180deg,transparent,var(--copper),transparent);z-index:5;transform:translateX(-1px)}
-  .ba-handle::before{content:"";position:absolute;top:50%;left:50%;width:46px;height:46px;transform:translate(-50%,-50%);border-radius:50%;background:var(--ink-850);border:2px solid var(--copper);box-shadow:0 6px 20px rgba(0,0,0,.6)}
-  .ba-handle::after{content:"\21D4";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--copper);font-size:18px;z-index:6}
-  .ba-side{display:flex;flex-direction:column;gap:14px}
-  .ba-thumb{position:relative;flex:1;border-radius:12px;overflow:hidden;border:1px solid var(--line);cursor:pointer;transition:.2s;min-height:0}
-  .ba-thumb:hover{border-color:var(--copper);transform:translateY(-3px)}
-  .ba-thumb .photo{position:absolute;inset:0}
-  .ba-thumb.active{outline:2px solid var(--ember)}
-
   /* ============ SMS MODULE ============ */
   .sms-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
   .steps{list-style:none;padding:0;margin:28px 0 0;display:flex;flex-direction:column;gap:20px}
@@ -248,7 +229,7 @@
 
   /* ============ RESPONSIVE ============ */
   @media(max-width:900px){
-    .hero-grid,.tool-grid,.ba-main,.sms-wrap,.split{grid-template-columns:1fr}
+    .hero-grid,.tool-grid,.sms-wrap,.split{grid-template-columns:1fr}
     .hero-visual{height:400px;margin-top:20px}
     .svc-grid,.tst-grid{grid-template-columns:1fr}
     .stats-grid{grid-template-columns:repeat(2,1fr);gap:24px}
@@ -261,7 +242,7 @@
   @media(max-width:560px){.stats-grid{grid-template-columns:1fr}.stat::before{display:none!important}.ba-side{flex-direction:column}}
   .banner{background:linear-gradient(90deg,var(--ember),var(--copper));color:#1c0d00;text-align:center;font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:12.5px;font-weight:700;padding:8px 16px}
   .banner a{text-decoration:underline}
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:28px}.blogcard{border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .2s,border-color .2s}.blogcard:hover{transform:translateY(-3px)}.blogcard .bimg{height:172px;background-size:cover;background-position:center}.blogcard .bbody{padding:18px 18px 20px}.blogcard .bmeta{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.72;margin-bottom:9px}.blogcard h4{margin:0 0 9px;font-size:17px;line-height:1.35}.blogcard p{margin:0;font-size:14px;line-height:1.62;opacity:.85}.blogcard .more{margin-top:13px;font-size:13px;font-weight:700}@media(max-width:900px){.blog-grid{grid-template-columns:1fr}}</style>
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:28px}.blogcard{border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .2s,border-color .2s}.blogcard:hover{transform:translateY(-3px)}.blogcard .bimg{height:172px;background-size:cover;background-position:center}.blogcard .bbody{padding:18px 18px 20px}.blogcard .bmeta{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.72;margin-bottom:9px}.blogcard h4{margin:0 0 9px;font-size:17px;line-height:1.35}.blogcard p{margin:0;font-size:14px;line-height:1.62;opacity:.85}.blogcard .more{margin-top:13px;font-size:13px;font-weight:700}@media(max-width:900px){.blog-grid{grid-template-columns:1fr}}.work-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:230px;gap:18px}.work-grid .photo{position:relative;inset:auto;height:auto;border-radius:16px;border:1px solid var(--line);box-shadow:none;width:auto}.work-grid .wg-wide{grid-column:span 2}@media(max-width:900px){.work-grid{grid-template-columns:1fr;grid-auto-rows:200px}.work-grid .wg-wide{grid-column:span 1}}</style>
 
 <div class="banner reveal d1">Concept mockup for TCA Outdoor — Bold Contractor style (max-contrast black + hi-vis amber) + 4 new features · not the live site</div>
 
@@ -425,25 +406,11 @@
 <section class="sec" id="gallery">
   <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow">Feature 02 · The proof</p>
-      <h2>Before &amp; after — drag to reveal <span class="tag-new">New</span></h2>
-      <p class="lead">Filter by trade, then slide across any project to see the transformation. Real yards, real crews, right here in west-central Missouri.</p>
+      <p class="eyebrow">Our work</p>
+      <h2>Real work. Real Missouri yards.</h2>
+      <p class="lead">Every photo here is an actual TCA Outdoor project &mdash; hardscapes, pools and masonry across west-central Missouri.</p>
     </div>
-    <div class="filters" id="ba-filters">
-      <button data-f="all" aria-pressed="true">All Work</button>
-      <button data-f="hard" aria-pressed="false">Hardscapes</button>
-      <button data-f="pool" aria-pressed="false">Pools</button>
-      <button data-f="mas" aria-pressed="false">Masonry</button>
-    </div>
-    <div class="ba-main">
-      <div class="ba" id="ba" role="slider" aria-label="Before and after slider" aria-valuenow="55" tabindex="0">
-        <div class="layer photo ph-grass before" id="ba-before"><span class="ph-tag">Before</span></div>
-        <div class="layer photo ph-patio after" id="ba-after"></div>
-        <span class="lbl b">Before</span><span class="lbl a">After</span>
-        <div class="ba-handle" id="ba-handle"></div>
-      </div>
-      <div class="ba-side" id="ba-thumbs"></div>
-    </div>
+    <div class="work-grid"><div class="photo ph-patio wg-wide"><span class="ph-tag">Paver patio</span></div><div class="photo ph-pool"><span class="ph-tag">Inground pool &amp; deck</span></div><div class="photo ph-wall"><span class="ph-tag">Brick masonry</span></div><div class="photo ph-stone"><span class="ph-tag">Stone fireplace</span></div><div class="photo ph-fire"><span class="ph-tag">Fire pit &amp; patio</span></div></div>
   </div>
 </section>
 
@@ -724,53 +691,6 @@
     b.setAttribute('aria-pressed','true');fin.term=+b.dataset.m;calcFin();
   });});
   calcFin();
-
-  /* ================= BEFORE / AFTER ================= */
-  var PROJ=[
-    {f:'hard',b:'ph-grass',a:'ph-patio',lb:'Bare yard',la:'Paver patio',loc:'Blue Springs'},
-    {f:'pool',b:'ph-grass',a:'ph-pool',lb:'Empty yard',la:'Gunite pool + deck',loc:"Lee's Summit"},
-    {f:'mas',b:'ph-grass',a:'ph-stone',lb:'Bare wall',la:'Stone fireplace',loc:'Higginsville'},
-    {f:'mas',b:'ph-grass',a:'ph-wall',lb:'Old brick',la:'Brick masonry',loc:'Warrensburg'}
-  ];
-  var ba=$('#ba'),baBefore=$('#ba-before'),baAfter=$('#ba-after'),baHandle=$('#ba-handle'),thumbs=$('#ba-thumbs');
-  var cur=0,filter='all';
-  function setBA(x){x=Math.max(2,Math.min(98,x));ba.style.setProperty('--x',x+'%');ba.setAttribute('aria-valuenow',Math.round(x));}
-  function loadProj(i){
-    var p=PROJ[i];cur=i;
-    baBefore.className='layer photo '+p.b+' before';
-    baAfter.className='layer photo '+p.a+' after';
-    baBefore.innerHTML='<span class="ph-tag">Before · '+p.lb+'</span>';
-    baAfter.innerHTML='<span class="ph-tag">'+p.la+' · '+p.loc+'</span>';
-    setBA(55);
-    $$('.ba-thumb',thumbs).forEach(function(t){t.classList.toggle('active',+t.dataset.i===i);});
-  }
-  function renderThumbs(){
-    thumbs.innerHTML='';
-    PROJ.forEach(function(p,i){
-      if(filter!=='all'&&p.f!==filter)return;
-      var d=document.createElement('button');d.className='ba-thumb';d.dataset.i=i;d.setAttribute('aria-label',p.la);
-      d.innerHTML='<div class="photo '+p.a+'"><span class="ph-tag">'+p.la+'</span></div>';
-      d.addEventListener('click',function(){loadProj(i);});
-      thumbs.appendChild(d);
-    });
-    var first=$$('.ba-thumb',thumbs)[0];
-    if(first)loadProj(+first.dataset.i);
-  }
-  $$('#ba-filters button').forEach(function(b){b.addEventListener('click',function(){
-    $$('#ba-filters button').forEach(function(x){x.setAttribute('aria-pressed','false');});
-    b.setAttribute('aria-pressed','true');filter=b.dataset.f;renderThumbs();
-  });});
-  function baDrag(clientX){var r=ba.getBoundingClientRect();setBA((clientX-r.left)/r.width*100);}
-  var dragging=false;
-  ba.addEventListener('pointerdown',function(e){dragging=true;ba.setPointerCapture(e.pointerId);baDrag(e.clientX);});
-  ba.addEventListener('pointermove',function(e){if(dragging)baDrag(e.clientX);});
-  ba.addEventListener('pointerup',function(){dragging=false;});
-  ba.addEventListener('keydown',function(e){
-    var x=parseFloat(ba.style.getPropertyValue('--x'))||55;
-    if(e.key==='ArrowLeft'){setBA(x-4);e.preventDefault();}
-    if(e.key==='ArrowRight'){setBA(x+4);e.preventDefault();}
-  });
-  renderThumbs();
 
   /* ================= SMS THREAD (auto-play) ================= */
   var thread=$('#thread');
