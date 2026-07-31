@@ -242,7 +242,7 @@
   @media(max-width:560px){.stats-grid{grid-template-columns:1fr}.stat::before{display:none!important}.ba-side{flex-direction:column}}
   .banner{background:linear-gradient(90deg,var(--ember),var(--copper));color:#1e2208;text-align:center;font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:12.5px;font-weight:700;padding:8px 16px}
   .banner a{text-decoration:underline}
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:28px}.blogcard{border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .2s,border-color .2s}.blogcard:hover{transform:translateY(-3px)}.blogcard .bimg{height:172px;background-size:cover;background-position:center}.blogcard .bbody{padding:18px 18px 20px}.blogcard .bmeta{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.72;margin-bottom:9px}.blogcard h4{margin:0 0 9px;font-size:17px;line-height:1.35}.blogcard p{margin:0;font-size:14px;line-height:1.62;opacity:.85}.blogcard .more{margin-top:13px;font-size:13px;font-weight:700}@media(max-width:900px){.blog-grid{grid-template-columns:1fr}}.work-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:230px;gap:18px}.work-grid .photo{position:relative;inset:auto;height:auto;border-radius:16px;border:1px solid var(--line);box-shadow:none;width:auto}.work-grid .wg-wide{grid-column:span 2}@media(max-width:900px){.work-grid{grid-template-columns:1fr;grid-auto-rows:200px}.work-grid .wg-wide{grid-column:span 1}}</style>
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:28px}.blogcard{border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .2s,border-color .2s}.blogcard:hover{transform:translateY(-3px)}.blogcard .bimg{height:172px;background-size:cover;background-position:center}.blogcard .bbody{padding:18px 18px 20px}.blogcard .bmeta{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.72;margin-bottom:9px}.blogcard h4{margin:0 0 9px;font-size:17px;line-height:1.35}.blogcard p{margin:0;font-size:14px;line-height:1.62;opacity:.85}.blogcard .more{margin-top:13px;font-size:13px;font-weight:700}@media(max-width:900px){.blog-grid{grid-template-columns:1fr}}.work-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:230px;gap:18px}.work-grid .photo{position:relative;inset:auto;height:auto;border-radius:16px;border:1px solid var(--line);box-shadow:none;width:auto}.work-grid .wg-wide{grid-column:span 2}@media(max-width:900px){.work-grid{grid-template-columns:1fr;grid-auto-rows:200px}.work-grid .wg-wide{grid-column:span 1}}.qform{margin-top:26px;display:grid;gap:16px;max-width:780px}.qrow{display:grid;grid-template-columns:1fr 1fr;gap:16px}.qform label{display:grid;gap:7px;font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-size:11.5px;font-weight:700;opacity:.85}.qform input,.qform select,.qform textarea{font-family:inherit;font-size:16px;font-weight:400;text-transform:none;letter-spacing:normal;background:#fff;color:#16241d;border:1px solid var(--line);border-radius:10px;padding:12px 14px;width:100%;box-sizing:border-box}.qform textarea{resize:vertical;min-height:112px}.qform ::placeholder{color:#8a938d}.qsend{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:2px}.qnote{font-size:13px;opacity:.72}@media(max-width:760px){.qrow{grid-template-columns:1fr}}</style>
 
 <div class="banner reveal d1">Concept mockup for TCA Outdoor — Signature style (TCA logo lime on neutral logo grey) + 4 new features · not the live site</div>
 
@@ -265,7 +265,7 @@
     </div>
     <a href="https://www.facebook.com/people/TCA-Outdoor-LLC/61553557492870/" target="_blank" rel="noopener" aria-label="Follow TCA Outdoor on Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:9px;border:1px solid var(--line);color:var(--copper);font-family:var(--serif);font-weight:700;font-size:18px;flex:none">f</a>
     <a href="https://g.co/kgs/S81b7pa" target="_blank" rel="noopener" aria-label="TCA Outdoor on Google" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:9px;border:1px solid var(--line);color:var(--copper);font-family:var(--serif);font-weight:700;font-size:18px;flex:none">G</a>
-    <a href="#estimator" class="btn btn-primary nav-cta">Get a Quote</a>
+    <a href="#quote" class="btn btn-primary nav-cta">Get a Quote</a>
     <button class="burger" id="burger" aria-label="Menu">☰</button>
   </div>
 </header>
@@ -576,6 +576,37 @@
             </div>
           </a>
         </div>
+      </div>
+    </section>
+
+    <!-- QUOTE FORM -->
+    <section class="sec" id="quote">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow">Get a quote</p>
+          <h2>Tell us about your project.</h2>
+          <p class="lead">Prefer email to a phone call? Send the details and we&rsquo;ll come back with a ballpark and a time to walk the site.</p>
+        </div>
+        <form class="qform" onsubmit="return false" novalidate>
+          <div class="qrow">
+            <label>Name<input type="text" name="name" autocomplete="name" placeholder="Your name"></label>
+            <label>Email<input type="email" name="email" autocomplete="email" placeholder="you@example.com"></label>
+          </div>
+          <div class="qrow">
+            <label>Phone<input type="tel" name="phone" autocomplete="tel" placeholder="660-000-0000"></label>
+            <label>Service<select name="service">
+              <option>Hardscapes</option>
+              <option>Pools</option>
+              <option>Masonry</option>
+              <option>Other</option>
+            </select></label>
+          </div>
+          <label>Project details<textarea name="message" rows="4" placeholder="Rough size, timeline, and anything you already know."></textarea></label>
+          <div class="qsend">
+            <button type="submit" class="btn btn-primary">Send my request</button>
+            <span class="qnote">Demo form &mdash; not connected in this preview.</span>
+          </div>
+        </form>
       </div>
     </section>
 
