@@ -106,12 +106,29 @@
   .tag-new{display:inline-block;font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:10px;font-weight:700;color:#fff;background:var(--green);padding:4px 10px;border-radius:20px;margin-left:10px;vertical-align:middle}
 
   /* SERVICES BENTO */
-  .bento{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:230px;gap:18px}
-  .tile{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--line);cursor:pointer}
+  .bento{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(230px,auto);gap:18px}
+  .tile{position:relative;display:flex;flex-direction:column;justify-content:flex-end;background:var(--ink);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--line);cursor:pointer}
   .tile .img{position:absolute;inset:0;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
   .tile:hover .img{transform:scale(1.06)}
+  /* FROSTED PANEL, ported from client-mockup-kit 2026-08-04 (its gotchas J8-J10).
+     REGRESSION-PROOFING, NOT A FIX — measured before porting, TCA's three tiles were
+     already AA-clean at every breakpoint (7.7-13.2 at 1280/1050/900, worst 5.62 at 390px),
+     because three large bento tiles put the text block 51-67% down, below where the old
+     `transparent 38%` gradient began. The sibling client has TEN services, so its shorter
+     tiles pushed headings into the transparent zone at 1.0:1, 0 of 10 at AA.
+     The bug is latent here, not absent: that 5.62 is carried by one photo happening to be
+     dark, and a brighter swap drops it under AA with nothing to catch it. The panel
+     decouples contrast from the image entirely, so it cannot regress on a photo swap.
+     The rgba background alone clears AA — a browser without backdrop-filter loses the blur
+     and keeps the legibility. The wash below is for the tile as a whole, not for contrast. */
   .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 38%,rgba(12,20,15,.82))}
-  .tile-body{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:22px;color:#fff}
+  .tile:has(.img)::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(12,20,15,.12),rgba(12,20,15,.42))}
+  /* `relative`, not `absolute`: the panel's own margin makes the body taller, and an
+     out-of-flow body cannot grow its tile — so minmax(...,auto) above would do nothing and
+     a fixed row would clip the heading upward into overflow:hidden, which the render gate
+     cannot see (no-h-overflow is horizontal; vertical clipping produces no scrollbar). */
+  .tile-body{position:relative;z-index:3;padding:22px;color:#fff}
+  .tile:has(.img) .tile-body{margin:14px;padding:18px;border-radius:14px;background:rgba(10,17,13,.72);-webkit-backdrop-filter:blur(9px) saturate(120%);backdrop-filter:blur(9px) saturate(120%);border:1px solid rgba(255,255,255,.14)}
   .tile-body h3{font-size:24px}
   .tile-body p{font-size:13.5px;color:#e6ede8;margin-top:5px;max-width:38ch}
   .tile-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
@@ -235,8 +252,8 @@
   .foot-bottom{margin-top:46px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:#7f9086;font-size:13px}
   .banner{background:var(--green);color:#fff;text-align:center;font-family:var(--cond);text-transform:uppercase;letter-spacing:.13em;font-size:12.5px;font-weight:700;padding:8px 16px}
 
-  @media(max-width:1050px){.hero-grid,.tool-grid,.sms-wrap,.split{grid-template-columns:1fr}.hero-photo{height:420px}.proc,.tst-grid{grid-template-columns:1fr}.bento{grid-auto-rows:200px}.mosaic{grid-template-columns:repeat(2,1fr)}.tool-out{border-left:none;border-top:1px solid var(--line)}.sec{padding:64px 0}}
-  @media(max-width:640px){.bento{grid-template-columns:1fr;grid-auto-rows:220px}.tile.big{grid-column:span 1;grid-row:span 1}.mosaic{grid-template-columns:1fr;grid-auto-rows:200px}.gc-wide{grid-column:span 1}.topbar{display:none}}
+  @media(max-width:1050px){.hero-grid,.tool-grid,.sms-wrap,.split{grid-template-columns:1fr}.hero-photo{height:420px}.proc,.tst-grid{grid-template-columns:1fr}.bento{grid-auto-rows:minmax(200px,auto)}.mosaic{grid-template-columns:repeat(2,1fr)}.tool-out{border-left:none;border-top:1px solid var(--line)}.sec{padding:64px 0}}
+  @media(max-width:640px){.bento{grid-template-columns:1fr;grid-auto-rows:minmax(220px,auto)}.tile.big{grid-column:span 1;grid-row:span 1}.mosaic{grid-template-columns:1fr;grid-auto-rows:200px}.gc-wide{grid-column:span 1}.topbar{display:none}}
 .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:28px}.blogcard{border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .2s,border-color .2s}.blogcard:hover{transform:translateY(-3px)}.blogcard .bimg{height:172px;background-size:cover;background-position:center}.blogcard .bbody{padding:18px 18px 20px}.blogcard .bmeta{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.72;margin-bottom:9px}.blogcard h4{margin:0 0 9px;font-size:17px;line-height:1.35}.blogcard p{margin:0;font-size:14px;line-height:1.62;opacity:.85}.blogcard .more{margin-top:13px;font-size:13px;font-weight:700}@media(max-width:900px){.blog-grid{grid-template-columns:1fr}}.qform{margin-top:26px;display:grid;gap:16px;max-width:780px}.qrow{display:grid;grid-template-columns:1fr 1fr;gap:16px}.qform label{display:grid;gap:7px;font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-size:11.5px;font-weight:700;opacity:.85}.qform input,.qform select,.qform textarea{font-family:inherit;font-size:16px;font-weight:400;text-transform:none;letter-spacing:normal;background:#fff;color:#16241d;border:1px solid var(--line);border-radius:10px;padding:12px 14px;width:100%;box-sizing:border-box}.qform textarea{resize:vertical;min-height:112px}.qform ::placeholder{color:#8a938d}.qsend{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:2px}.qnote{font-size:13px;opacity:.72}@media(max-width:760px){.qrow{grid-template-columns:1fr}}</style><style>.btn-primary{background:linear-gradient(180deg,#57bcff,#2ea3f2);color:#06263a;box-shadow:0 12px 26px -12px rgba(46,163,242,.6)}.btn-primary:hover{box-shadow:0 18px 34px -12px rgba(46,163,242,.75)}.tag-new{background:#2ea3f2;color:#06263a}.step-n{background:#2ea3f2;color:#06263a}.sms-send{background:#2ea3f2;color:#06263a}.bub.me{background:#2ea3f2;color:#06263a}.float-stat{background:rgba(46,163,242,.97);color:#06263a}input[type=range]{background:linear-gradient(90deg,#2ea3f2 var(--fill,40%),var(--line-2) var(--fill,40%))}</style>
 
 <div class="banner reveal d1">Concept mockup for TCA Outdoor — “Coastal Blue style (your original brand blue, cleaned up)” style · real TCA project photos · not the live site</div>
