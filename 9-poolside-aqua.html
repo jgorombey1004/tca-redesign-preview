@@ -440,7 +440,7 @@
         <div class="sms-top"><b>TCA Outdoor</b><small>Example conversation</small></div>
         <div class="thread" id="thread"></div>
         <div class="sms-input">
-          <input type="text" id="sms-field" placeholder="Text your project…" aria-label="Message">
+          <input type="text" id="sms-field" placeholder="Text your project…" aria-label="Message" maxlength="160">
           <button class="sms-send" id="sms-send" aria-label="Send">↑</button>
         </div>
       </div>
@@ -599,21 +599,34 @@
           <h2>Tell us about your project.</h2>
           <p class="lead">Prefer email to a phone call? Send the details and we&rsquo;ll come back with a ballpark and a time to walk the site.</p>
         </div>
-        <form class="qform" onsubmit="return false" novalidate>
+        <!-- `novalidate` was removed 2026-08-04. With it set and no field required, the
+             redesign demo accepted worse data than TCA's CURRENT form does — a phone field
+             that takes anything produces a lead they cannot call back. Submit is still a
+             no-op because this is a mockup, so the browser's own messages are what a
+             visitor sees. -->
+        <form class="qform" onsubmit="return false">
           <div class="qrow">
-            <label>Name<input type="text" name="name" autocomplete="name" placeholder="Your name"></label>
-            <label>Email<input type="email" name="email" autocomplete="email" placeholder="you@example.com"></label>
+            <label>Name<input type="text" name="name" autocomplete="name" placeholder="Your name" maxlength="60" required></label>
+            <label>Email<input type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" maxlength="120"></label>
           </div>
+          <!-- Zip is required because TCA's OWN form requires it: a redesign must not ask
+               for less qualifying information than the form it replaces, least of all the
+               field that says whether a caller is inside the service area. No placeholder —
+               an example zip would be a real place, and the wrong one reads as carelessness
+               to exactly the people who live in the market.
+               Service moves to full width: .qrow is a fixed 1fr 1fr, so a fifth field in a
+               row would leave an empty cell beside it. -->
           <div class="qrow">
-            <label>Phone<input type="tel" name="phone" autocomplete="tel" placeholder="660-000-0000"></label>
-            <label>Service<select name="service">
-              <option>Hardscapes</option>
-              <option>Pools</option>
-              <option>Masonry</option>
-              <option>Other</option>
-            </select></label>
+            <label>Phone<input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="660-000-0000" pattern="\(?\d{3}\)?[\-. ]?\d{3}[\-. ]?\d{4}" maxlength="14" title="A 10-digit phone number" data-mask="phone" required></label>
+            <label>Zip code<input type="text" name="zip" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" maxlength="10" title="Five digits, or ZIP+4" required></label>
           </div>
-          <label>Project details<textarea name="message" rows="4" placeholder="Rough size, timeline, and anything you already know."></textarea></label>
+          <label>Service<select name="service">
+            <option>Hardscapes</option>
+            <option>Pools</option>
+            <option>Masonry</option>
+            <option>Other</option>
+          </select></label>
+          <label>Project details<textarea name="message" rows="4" maxlength="1000" placeholder="Rough size, timeline, and anything you already know."></textarea></label>
           <div class="qsend">
             <button type="submit" class="btn btn-primary">Send my request</button>
             <span class="qnote">Demo form &mdash; not connected in this preview.</span>
@@ -748,6 +761,24 @@
   }
   $('#sms-send').addEventListener('click',userSend);
   $('#sms-field').addEventListener('keydown',function(e){if(e.key==='Enter')userSend();});
+
+  /* ================= phone mask =================
+     PROGRESSIVE ENHANCEMENT ONLY. The field's own `pattern` is what actually enforces
+     shape; this just reformats digits to 000-000-0000 as they are typed. If this script
+     never runs, the constraint still holds — which is the whole reason the pattern is on
+     the element rather than implemented here.
+     The caret guard is not decoration. Rewriting .value moves the caret to the end, so
+     without it a visitor correcting a digit mid-number is thrown to the end on every
+     keystroke. Mid-string edits are left alone; only typing at the end reformats. */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-mask="phone"]'),function(el){
+    el.addEventListener('input',function(){
+      if(el.selectionStart!==el.value.length)return;
+      var d=el.value.replace(/\D/g,'').slice(0,10);
+      el.value = d.length>6 ? d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6)
+               : d.length>3 ? d.slice(0,3)+'-'+d.slice(3)
+               : d;
+    });
+  });
 })();
 </script>
 
